@@ -21,6 +21,9 @@ class Person(models.Model):
         choices=ROLES
     )
 
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
+
 
 class Movie(models.Model):
     title = models.CharField(
@@ -40,3 +43,5 @@ class Movie(models.Model):
         related_name='movies_as_producer'
     )
 
+    def __str__(self):
+        return self.title
