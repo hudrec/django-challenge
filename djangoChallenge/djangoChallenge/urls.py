@@ -15,15 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core import views
-from django.conf.urls import url, include
-from rest_framework.routers import DefaultRouter
-
-router = DefaultRouter()
-router.register('persons', views.PersonViewSet, basename='person')
-router.register('movies', views.MovieViewSet, basename='movie')
+from core.views import create_short_url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls), name='persons'),
+    path('create-shorted-url/', create_short_url, name='short_url')
 ]

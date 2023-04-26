@@ -1,47 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
-class Person(models.Model):
-    ROLES = [
-        ('AC', 'ACTOR'),
-        ('DI', 'DIRECTOR'),
-        ('PR', 'PRODUCER'),
-    ]
-    last_name = models.CharField(
-        max_length=255
-    )
-    first_name = models.CharField(
-        max_length=255
-    )
-    aliases = models.CharField(
-        max_length=127
-    )
-    role = models.CharField(
-        max_length=2,
-        choices=ROLES
-    )
-
-    def __str__(self):
-        return self.first_name + ' ' + self.last_name
-
-
-class Movie(models.Model):
-    title = models.CharField(
-        max_length=255
-    )
-    release_year = models.IntegerField()
-    casting = models.ManyToManyField(
-        Person,
-        related_name='movies_as_actor'
-    )
-    directors = models.ManyToManyField(
-        Person,
-        related_name='movies_as_director'
-    )
-    producers = models.ManyToManyField(
-        Person,
-        related_name='movies_as_producer'
-    )
-
-    def __str__(self):
-        return self.title
+class UrlShort(models.Model):
+    url = models.URLField()
+    slug = models.CharField(max_length=10, unique=True)
+    shorted_url = models.URLField()
+    title = models.CharField(max_length=255)
