@@ -2,43 +2,25 @@
 
 ## LIST OF APIs
 ```
-/api/courses/
-/api/courses/[id]
-/api/movies/
-/api/movies/[id]
+/create-shorted-url/
 ```
-##METHODS
 
-###SAFE METHODS
+## EXAMPLE OF JSON STRUCTURE TO USE ON API 
 
-GET, HEAD, OPTIONS 
+```json
 
-###UNSAFE METHODS
-* Need authentication
+{
+  'url': 'http://www.google.com'
+}
 
-POST, PUT, PATCH, DELETE 
+```
 
-## LIBRARIES AND FRAMEWORKS USED 
+## EXAMPLE RESPONSE 
 
-### django-rest-framework
-* Can manage the serializers.
-* Can use the authentication requirement.
-* More comfortable to make APIs
+```json
 
-### django-environ
+{
+  'short_url': 'http://localhost:8000/create-shorted-url/a'
+}
 
-* Manage the environment variables.
-
-### psycopg2-binary
-
-* Conexion for django and postgres 
-
-### poetry 
-
-* Manage the dependencies.
-
-### Docker 
-
-* Best way to create containers
-* docker-compose for make the build structure of container. 
-
+```
