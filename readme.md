@@ -20,7 +20,7 @@
 ```json
 
 {
-  'short_url': 'http://localhost:8000/create-shorted-url/a'
+  'short_url': 'http://localhost:8000/a/'
 }
 
 ```

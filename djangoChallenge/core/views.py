@@ -16,7 +16,7 @@ def create_short_url(request):
             json_data = json.loads(request.body)
             url = json_data['url']
             slug = generate_shorted_url(len(UrlShort.objects.all()))
-            shorted_url = request.build_absolute_uri(slug)
+            shorted_url = request.get_host() + '/' + slug
             page = requests.get(url)
             soup = BeautifulSoup(page.content, "html.parser")
             title = soup.title.string
@@ -26,10 +26,9 @@ def create_short_url(request):
                 shorted_url=shorted_url,
                 title=title
             )
-            return JsonResponse({"short_url":shorted_url},status=200)
+            return JsonResponse({"short_url": shorted_url},status=200)
 
         except Exception as e:
-            print(e)
-            return JsonResponse(status=500)
+            return JsonResponse({"error": e}, status=500)
 
 
